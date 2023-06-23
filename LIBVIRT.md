@@ -13,7 +13,10 @@
 
 ## Install Libvirt
 
-    apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager dnsmasq qemu-utils swtpm swtpm-tools
+    apt-get install -y qemu-kvm libvirt-clients \
+      libvirt-daemon-system bridge-utils virtinst \
+      libvirt-daemon virt-manager dnsmasq \
+      qemu-utils swtpm swtpm-tools
     
 
 ### Create vmdisks pool

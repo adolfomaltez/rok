@@ -71,17 +71,18 @@ helm install rancher rancher-stable/rancher \
 ```
 
 ### Alternative: letsEncrypt certificate
+```sh
 #helm install rancher rancher-stable/rancher \
 #  --namespace cattle-system \
-#  --set hostname=192-168-10-12.sslip.io \
+#  --set hostname=rancher.192-168-10-12.sslip.io \
 #  --set bootstrapPassword=admin \
-#  --set replicas=1  \
-#  --version=2.7.4   \
-#  --set global.cattle.psp.enabled=false   \
+#  --set replicas=1 \
+#  --version=2.7.4 \
+#  --set global.cattle.psp.enabled=false \
 #  --set ingress.tls.source=letsEncrypt \
-#  --set letsEncrypt.email=adolfomaltez@gmail.com \
+#  --set letsEncrypt.email=user@mail.net \
 #  --set letsEncrypt.ingress.class=nginx
-
+```
 
 
 ## Create rancher API token
