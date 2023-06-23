@@ -1,0 +1,27 @@
+#cloud-config
+package_update: true
+packages:
+  - qemu-guest-agent
+runcmd:
+  - - systemctl
+    - enable
+    - '--now'
+    - qemu-guest-agent.service
+ssh_authorized_keys:
+  - >-
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCMwBihgRvZkQ7zYlOEn+E0EgvBQXl5WO/qzF5ijglSW72c7nrXBl6typ2GOFrafkOjIgPSwSMRzZZzVuaBNwJ+zcSa9fjscnjEF2OJcajKk2UGSVoLHFtfJt6eTbIeBoRHnj0+fG26pVWqj/i1ZY0NV5X+V7eOZhyCIrnw8YBrjIymUi008mKCJYqFNAmZFuvfZnLFSLZrlgbPcEyyMDFMhpBRPwA6Fc3CS8kSk0Z3Qs0ZTMWVjpjM6hgceMErrjIBUbUaT/HJvSl4rPgDajJolYiJWgqyguYvay9/vqors1M1BF3t4nuHpuRTCYRgNJv8sIB3TkJfdP1pWuzMXJ7Dpc0vim5jaT931zh5eKtaAzHjMEDwzM09YpVlnYAmY9KHkHwyayi7hr8vUN+MAFTDdzk7+mKc+5dl6QQjGUnX7824hvb6+gQLjg56W8wfujkJaah/9LqgPkyaTEX2GOrjoZl+lQl13LkJ4tPQL+ew1Em9VyD7hY25QtAbs26EEmc= taro@dorothy
+ca-certs:
+  trusted:
+  - |
+   -----BEGIN CERTIFICATE-----
+   MIIBvjCCAWOgAwIBAgIBADAKBggqhkjOPQQDAjBGMRwwGgYDVQQKExNkeW5hbWlj
+   bGlzdGVuZXItb3JnMSYwJAYDVQQDDB1keW5hbWljbGlzdGVuZXItY2FAMTY4NjU5
+   MDE4MjAeFw0yMzA2MTIxNzE2MjJaFw0zMzA2MDkxNzE2MjJaMEYxHDAaBgNVBAoT
+   E2R5bmFtaWNsaXN0ZW5lci1vcmcxJjAkBgNVBAMMHWR5bmFtaWNsaXN0ZW5lci1j
+   YUAxNjg2NTkwMTgyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4mYX/p5PeYot
+   935ll+DCnoF7bd+0KfFkesxf8Z/qTFFNMy3vg5dk1+ENolTSnvqtP5Fhdo3eclZM
+   5UyZ2LuNpKNCMEAwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMBAf8wHQYD
+   VR0OBBYEFCbzxqjBVSq5Uotlz7xsowDyKYQJMAoGCCqGSM49BAMCA0kAMEYCIQCs
+   GDA6ZT/jsAVoAdYAjuvZLfce+WjCHAVhTOyq2OT6MAIhAIUFeCKpTmj/qfm8fsOS
+   nWR7ZINXPq2Vvw9EjpUOQh+x
+   -----END CERTIFICATE-----

@@ -1,0 +1,18 @@
+config:
+  cloud-config:
+    users:
+      - name: root
+        passwd: root
+  elemental:
+    install:
+      debug: true
+      device: /dev/vda
+      poweroff: true
+    registration:
+      emulate-tpm: true
+      emulated-tpm-seed: 1
+machineInventoryLabels:
+  machineUUID: '"${System Information/UUID}"'
+  manufacturer: '"${System Information/Manufacturer}"'
+  productName: '"${System Information/Product Name}"'
+  serialNumber: '"${System Information/Serial Number}"'
