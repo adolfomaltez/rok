@@ -4,7 +4,7 @@
 - docker
 ```sh
 sudo apt-get update
-sudo apt-get install ca-certificates curl gnupg
+sudo apt-get -y install ca-certificates curl gnupg
 
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -15,8 +15,8 @@ echo \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get -y update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 usermod -aG docker $USER
 ```
@@ -31,14 +31,14 @@ sudo mv ./kind /usr/local/bin/kind
 - helm
 ```sh
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
+sudo apt-get -y install apt-transport-https
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
-sudo apt-get install helm
+sudo apt-get -y install helm
 ```
 - kubectl
 ```sh
-apt-get install kubernetes-client
+apt-get -y install kubernetes-client
 ```
 
 ## Create kind cluster with extra paths.
@@ -99,7 +99,7 @@ kubectl create namespace cattle-system
 ```sh
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.192-168-1-22.sslip.io \
+  --set hostname=rancher.192-168-0-13.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
   --version=2.7.5 \
