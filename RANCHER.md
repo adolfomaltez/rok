@@ -99,7 +99,7 @@ kubectl create namespace cattle-system
 ```sh
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.192-168-0-13.sslip.io \
+  --set hostname=rancher.192-168-0-1.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
   --version=2.7.5 \
@@ -120,6 +120,13 @@ helm install rancher rancher-stable/rancher \
 #  --set letsEncrypt.ingress.class=nginx
 ```
 
+
+## Some commands for kind to load docker image on kind
+
+```sh
+docker pull rancher/fleet-agent:v0.7.0
+kind load docker-image rancher/fleet-agent:v0.7.0 --name rancher --nodes rancher-control-plane
+```
 
 ## Create rancher API token
 Change rancher admin password, create API token.
