@@ -57,7 +57,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 
 ### Apply CRDs
 ```sh
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.2/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.crds.yaml
 ```
 
 ### Add the Jetstack Helm repository
@@ -75,7 +75,7 @@ helm repo update
 kubectl create namespace cert-manager
 helm install cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v1.12.2
+      --version v1.13.2
 ```
 
 ## Install Rancher
@@ -99,10 +99,10 @@ kubectl create namespace cattle-system
 ```sh
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.192-168-0-1.sslip.io \
+  --set hostname=rancher.192-168-31-13.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
-  --version=2.7.5 \
+  --version=2.7.9 \
   --set global.cattle.psp.enabled=false
 ```
 
