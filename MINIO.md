@@ -12,7 +12,11 @@ helm install \
   --namespace minio-operator \
   --create-namespace \
   minio-operator minio/operator
+# Run the output commands to get the token
 ```
+
+# [ PENDING ] Create the ingress
+
 
 # Download and edit the values.yaml file for tenant
 ```sh
