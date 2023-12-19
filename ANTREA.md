@@ -8,7 +8,7 @@ git clone https://github.com/antrea-io/antrea.git
 git checkout release-1.14
 ```
 
-# ~~Add to ci/kind/kind-setup.sh~~ not neccesary on release-1.14
+# Add to ci/kind/kind-setup.sh  ~~not neccesary on release-1.14~~
 ```yaml
 - role: control-plane
   extraPortMappings:
@@ -28,7 +28,7 @@ docker pull projects.registry.vmware.com/antrea/antrea-ubuntu:v1.14.1
 ## Create k8s cluster
 ```sh
 # Create k8s cluster using kind and push antrea image to nodes
-./ci/kind/kind-setup.sh --images projects.registry.vmware.com/antrea/antrea-ubuntu:v1.14.1 create cluster-01
+./ci/kind/kind-setup.sh --images projects.registry.vmware.com/antrea/antrea-ubuntu:v1.14.1 create cluster
 ```
 
 ## Install Antrea on k8s cluster
@@ -39,8 +39,7 @@ kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v1.14.1/a
 ## Label worker nodes (for nginx ingress)
 ```sh
 kubectl get nodes --show-labels
-kubectl label nodes cluster-01-worker  ingress-ready=true
-kubectl label nodes cluster-01-worker2 ingress-ready=true
+kubectl label nodes cluster-control-plane  ingress-ready=true
 ```
 
 ## Install nginx ingress
