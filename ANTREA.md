@@ -89,7 +89,7 @@ kubectl create namespace cattle-system
 
 ### Install the Rancher Helm chart
 ```sh
-helm install rancher rancher-stable/rancher \
+helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.192-168-31-13.sslip.io \
   --set bootstrapPassword=admin \
