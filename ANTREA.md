@@ -5,7 +5,7 @@
 ## Clone Antrea git repository
 ```sh
 git clone https://github.com/antrea-io/antrea.git
-git checkout release-1.14
+git checkout release-1.15
 ```
 
 # Add to ci/kind/kind-setup.sh  ~~not neccesary on release-1.14~~
@@ -22,18 +22,21 @@ git checkout release-1.14
 
 ## Pull Antrea docker image
 ```sh
-docker pull projects.registry.vmware.com/antrea/antrea-ubuntu:v1.14.1
+docker pull antrea/antrea-agent-ubuntu:v1.15.1
+docker pull antrea/antrea-controller-ubuntu:v1.15.1
 ```
 
 ## Create k8s cluster
 ```sh
 # Create k8s cluster using kind and push antrea image to nodes
-./ci/kind/kind-setup.sh --images projects.registry.vmware.com/antrea/antrea-ubuntu:v1.14.1 create cluster
+./ci/kind/kind-setup.sh create cluster
+kind load docker-image antrea/antrea-agent-ubuntu:v1.15.1  --name cluster
+kind load docker-image antrea/antrea-controller-ubuntu:v1.15.1  --name cluster
 ```
 
 ## Install Antrea on k8s cluster
 ```sh
-kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v1.14.1/antrea.yml
+kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v1.15.1/antrea.yml
 ```
 
 ## Label worker nodes (for nginx ingress)
@@ -94,7 +97,7 @@ helm install rancher rancher-latest/rancher \
   --set hostname=rancher.192-168-31-13.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
-  --version=2.8.0 \
+  --version=2.8.2 \
   --set global.cattle.psp.enabled=false
 ```
 
