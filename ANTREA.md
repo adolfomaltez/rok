@@ -97,7 +97,7 @@ helm install rancher rancher-latest/rancher \
   --set hostname=rancher.192-168-31-13.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
-  --version=2.8.4 \
+  --version=2.8.5 \
   --set global.cattle.psp.enabled=false
 ```
 

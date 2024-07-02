@@ -11,5 +11,19 @@ helm install crossplane --namespace crossplane-system --create-namespace crosspl
 kubectl  get all -n crossplane-system
 ```
 
+
+# CLI installation
+```sh
+curl -sL "https://raw.githubusercontent.com/crossplane/crossplane/master/install.sh" | sh
+sudo mv crossplane /usr/local/bin
+```
+## Installing http-provider
+```sh
+crossplane xpkg install provider xpkg.upbound.io/crossplane-contrib/provider-http:v0.2.0
+```
+
+
 # References
-- https://docs.crossplane.io/v1.13/software/install
+- https://docs.crossplane.io/latest/software/install
+- https://docs.crossplane.io/latest/cli/
+- https://blog.crossplane.io/introducing-provider-http-empowering-crossplane-with-http-interactions/
