@@ -52,7 +52,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 
 ## Install cert-manager CRDs
 ```sh
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
 ```
 
 ### Add the Jetstack Helm repository
@@ -70,7 +70,7 @@ helm repo update
 kubectl create namespace cert-manager
 helm install cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v1.14.5
+      --version v1.15.1
 ```
 
 ## Install Rancher
