@@ -84,14 +84,18 @@ curl --request POST --url 'http://192.168.31.94/api_jsonrpc.php'  --header "Auth
 # Create host group
 curl --request POST --url 'http://192.168.31.94/api_jsonrpc.php'  --header "Authorization: Bearer ${AUTHORIZATION_TOKEN}" --header 'Content-Type: application/json-rpc' --data '{"jsonrpc":"2.0","method":"hostgroup.create","params":{"name":"cluster01"},"id":1}'
 
-# Create the cluster host
-curl --request POST --url 'http://192.168.31.94/api_jsonrpc.php'  --header "Authorization: Bearer ${AUTHORIZATION_TOKEN}" --header 'Content-Type: application/json-rpc' --data '{"jsonrpc":"2.0","method":"host.create","params":{"host":"cluster01","groups":[{"groupid":"22"}], "templates":[{"templateid":"10510"}], "description":"cluster01", "monitored_by":1, "proxyid":"1"},"id":1}'
+# Create the host: Cluster State
+curl --request POST --url 'http://192.168.31.94/api_jsonrpc.php'  --header "Authorization: Bearer ${AUTHORIZATION_TOKEN}" --header 'Content-Type: application/json-rpc' --data '{"jsonrpc":"2.0","method":"host.create","params":{"host":"cluster01-state","groups":[{"groupid":"22"}], "templates":[{"templateid":"10510"}], "description":"cluster01 k8s state", "monitored_by":1, "proxyid":"1"},"id":1}'
+
+# Create the host: Nodes
+curl --request POST --url 'http://192.168.31.94/api_jsonrpc.php'  --header "Authorization: Bearer ${AUTHORIZATION_TOKEN}" --header 'Content-Type: application/json-rpc' --data '{"jsonrpc":"2.0","method":"host.create","params":{"host":"cluster01-nodes","groups":[{"groupid":"22"}], "templates":[{"templateid":"10507"}], "description":"cluster01 nodes state", "monitored_by":1, "proxyid":"1"},"id":1}'
 ```
 
 
 
 # Reference:
 - https://git.zabbix.com/projects/ZT/repos/kubernetes-helm/browse?at=refs%2Fheads%2Frelease%2F7.0
+- https://www.youtube.com/watch?v=2dPFvJrK9Mw
 - https://medium.com/@abdulemes/this-tutorial-describes-how-to-setup-monitoring-for-your-kubernetes-cluster-using-zabbix-1035d3fbbf16
 - https://www.zabbix.com/documentation/current/en/manual/api
 - https://www.zabbix.com/documentation/current/en/manual/api/reference/proxy/object#proxy
