@@ -5,10 +5,10 @@
 ## Clone Antrea git repository
 ```sh
 git clone https://github.com/antrea-io/antrea.git
-git checkout release-2.0
+git checkout release-2.4
 ```
 
-# Add to ci/kind/kind-setup.sh  ~~not neccesary on release-1.14~~
+# Add to ci/kind/kind-setup.sh
 ```yaml
 - role: control-plane
   extraPortMappings:
@@ -22,21 +22,21 @@ git checkout release-2.0
 
 ## Pull Antrea docker image
 ```sh
-docker pull antrea/antrea-agent-ubuntu:v2.0.0
-docker pull antrea/antrea-controller-ubuntu:v2.0.0
+docker pull antrea/antrea-agent-ubuntu:v2.4.0
+docker pull antrea/antrea-controller-ubuntu:v2.4.0
 ```
 
 ## Create k8s cluster
 ```sh
 # Create k8s cluster using kind and push antrea image to nodes
 ./ci/kind/kind-setup.sh create cluster
-kind load docker-image antrea/antrea-agent-ubuntu:v2.0.0  --name cluster
-kind load docker-image antrea/antrea-controller-ubuntu:v2.0.0  --name cluster
+kind load docker-image antrea/antrea-agent-ubuntu:v2.4.0  --name cluster
+kind load docker-image antrea/antrea-controller-ubuntu:v2.4.0  --name cluster
 ```
 
 ## Install Antrea on k8s cluster
 ```sh
-kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v2.0.0/antrea.yml
+kubectl apply -f https://github.com/antrea-io/antrea/releases/download/v2.4.0/antrea.yml
 ```
 
 ## Label worker nodes (for nginx ingress)
@@ -52,7 +52,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 
 ## Install cert-manager CRDs
 ```sh
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.1/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.18.2/cert-manager.crds.yaml
 ```
 
 ### Add the Jetstack Helm repository
@@ -70,7 +70,7 @@ helm repo update
 kubectl create namespace cert-manager
 helm install cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v1.15.1
+      --version v1.18.2
 ```
 
 ## Install Rancher
@@ -97,7 +97,7 @@ helm install rancher rancher-latest/rancher \
   --set hostname=rancher.192-168-31-13.sslip.io \
   --set bootstrapPassword=admin \
   --set replicas=1 \
-  --version=2.8.5 \
+  --version=2.11.3 \
   --set global.cattle.psp.enabled=false
 ```
 
